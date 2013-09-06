@@ -16,5 +16,7 @@ Using SWI-Prolog 6.3 or later:
 Source code available and pull requests accepted at
 http://github.com/mndrix/term_util
 
+This module uses [semantic versioning](http://semver.org/).
+
 @author Michael Hendricks <michael@ndrix.org>
 @license BSD
