@@ -1,7 +1,18 @@
-:- module(term_util, [ map_args/3
+:- module(term_util, [ control/1
+                     , map_args/3
                      ]).
 
-%%	map_args(+Goal, ?Term1, ?Term2) is semidet
+%%  control(+Term) is semidet.
+%
+%   True if Term is a control structure such as `,` or `;` etc.
+control((_,_)).
+control((_;_)).
+control((_->_)).
+control((_*->_)).
+control(\+(_)).
+
+
+%%  map_args(+Goal, ?Term1, ?Term2) is semidet
 %
 %   True if call(Goal, Term1Arg, Term2Arg) is true for each
 %   corresponding argument of Term1 and Term2.  For example,
