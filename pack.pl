@@ -1,6 +1,6 @@
 name(term_util).
 version('0.0.1').
-title('').
+title('Predicates for working with terms').
 author('Michael Hendricks','michael@ndrix.org').
 packager('Michael Hendricks','michael@ndrix.org').
 maintainer('Michael Hendricks','michael@ndrix.org').
