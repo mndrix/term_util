@@ -6,8 +6,8 @@
 %   True if call(Goal, Term1Arg, Term2Arg) is true for each
 %   corresponding argument of Term1 and Term2.  For example,
 %
-%     ?- map_args(succ, a(1,2,3), a(2,3,4)).
-%     true.
+%       ?- map_args(succ, a(1,2,3), a(2,3,4)).
+%       true.
 map_args(Goal, Term1, Term2) :-
     lazy_univ(Term1, Functor, Args1),
     lazy_univ(Term2, Functor, Args2),
