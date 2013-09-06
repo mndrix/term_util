@@ -31,9 +31,10 @@ map_args(Goal, Term1, Term2) :-
 
 %%  simplify(+Goal0, -Goal) is det
 %
-%   True if Goal is a simplification of Goal0. Goal0 is typically a
+%   True if Goal0 can be simplified to Goal. Goal0 is typically a
 %   clause body including conjunctions and disjunctions. By evaluating
-%   goals whose value is statically known, we produce a simpler Goal.
+%   goals whose value is statically known, and pruning unreachable
+%   branches in control structures, we produce a simpler Goal.
 %
 %   For example, the following are all true:
 %
