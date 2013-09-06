@@ -1,6 +1,7 @@
 :- module(term_util, [ control/1
                      , map_args/3
                      ]).
+:- use_module(library(delay)).
 
 %%  control(+Term) is semidet.
 %
@@ -19,31 +20,8 @@ control(\+(_)).
 %
 %       ?- map_args(succ, a(1,2,3), a(2,3,4)).
 %       true.
+:- meta_predicate term_util:map_args(2,?,?).
 map_args(Goal, Term1, Term2) :-
-    lazy_univ(Term1, Functor, Args1),
-    lazy_univ(Term2, Functor, Args2),
+    delay(univ(Term1, Functor, Args1)),
+    delay(univ(Term2, Functor, Args2)),
     maplist(Goal, Args1, Args2).
-
-
-% like =../2 but requires no instantiation
-% belongs in library(delay)
-lazy_univ(Term, Name, Args) :-
-    var(Term),
-    !,
-    when(
-        ( nonvar(Name), nonvar(Args) ),
-        when_proper_list(Args, Term=..[Name|Args])
-    ).
-lazy_univ(Term, Name, Args) :-
-    % nonvar(Term)
-    Term =.. [Name|Args].
-
-% belongs in library(delay)
-when_proper_list(List, Goal) :-
-    var(List),
-    !,
-    when(nonvar(List), when_proper_list(List, Goal)).
-when_proper_list([], Goal) :-
-    call(Goal).
-when_proper_list([_|T], Goal) :-
-    when_proper_list(T, Goal).
