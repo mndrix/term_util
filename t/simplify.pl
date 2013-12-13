@@ -50,12 +50,12 @@ simplify(
 
 % some predicates that can be evaluated statically
 simplify(
-    ( atom_codes(A,"hi"), write(A) ),
+    ( atom_codes(A,[0'h, 0'i]), write(A) ),
     write(hi)
 ).
 simplify(
     ( atom_codes(hi,C), write(C) ),
-    write("hi")
+    write([0'h, 0'i])
 ).
 simplify(  % cant' simplify this one
     ( atom_codes(A,C), write(A), write(C) ),
